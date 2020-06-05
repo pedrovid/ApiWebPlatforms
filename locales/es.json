@@ -1,0 +1,3 @@
+{
+  "err.load.user" : "error al cargar el usuario del sistema con id {{id}}"
+}

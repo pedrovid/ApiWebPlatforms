@@ -1,0 +1,9 @@
+{
+  "db":{
+    "url":"mongodb+srv://demo:abcd1234@cluster0-nfuo1.mongodb.net/test?retryWrites=true&w=majority"
+  },
+  "env":"prod",
+  "secret":{
+    "key":"4e0214edc70d400e41d26702d7a3ea03"
+  }
+}

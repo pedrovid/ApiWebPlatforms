@@ -1,0 +1,35 @@
+{
+  "name": "proyectoapi",
+  "version": "1.0.0",
+  "description": "Api del proyecto para la materia de Web",
+  "main": "app.js",
+  "scripts": {
+    "test": "export NODE_ENV=development; node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrovid/ApiWebPlatforms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedrovid/ApiWebPlatforms/issues"
+  },
+  "homepage": "https://github.com/pedrovid/ApiWebPlatforms#readme",
+  "dependencies": {
+    "async": "^3.2.0",
+    "bcrypt": "^4.0.1",
+    "config": "^3.3.1",
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.3",
+    "http-errors": "^1.7.3",
+    "i18n": "^0.10.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.18",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.0"
+  }
+}
