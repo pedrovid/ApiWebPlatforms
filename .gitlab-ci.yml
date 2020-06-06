@@ -14,7 +14,6 @@ Test:
     - apt-get update -qy
     - apt-get install -y nodejs
     - apt-get install -y ruby-dev
-    - npm start
 
 
     #Job 2:
