@@ -4,7 +4,8 @@
   "description": "Api del proyecto para la materia de Web",
   "main": "app.js",
   "scripts": {
-    "test": "export NODE_ENV=development; node ./bin/www"
+    "test": "export NODE_ENV=development; node ./bin/www",
+    "start": "export NODE_ENV=production; node ./bin/www"
   },
   "repository": {
     "type": "git",

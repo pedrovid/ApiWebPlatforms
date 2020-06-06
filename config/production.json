@@ -1,6 +1,6 @@
 {
   "db":{
-    "url":"mongodb+srv://demo:abcd1234@cluster0-nfuo1.mongodb.net/test?retryWrites=true&w=majority"
+    "url":"mongodb://mongo:27017/ApiWeb"
   },
   "env":"prod",
   "secret":{
