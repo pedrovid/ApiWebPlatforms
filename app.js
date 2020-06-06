@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
 
 const jwtKey = config.get("secret.key");
-app.use(expressJwt({secret:jwtKey}).unless({path:["/login"/*,"/usuarios"*/]}));
+app.use(expressJwt({secret:jwtKey}).unless({path:["/login","/usuarios"]}));
 
 //Usuario prueba
 /*
