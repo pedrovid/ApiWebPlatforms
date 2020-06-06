@@ -1,5 +1,5 @@
 # Node docker image on which this would be run
-image: node:latest
+image: ubuntu:latest
 
 cache:
   paths:
@@ -7,24 +7,28 @@ cache:
 
 stages:
   - test
-  - deploy_production
+#  - deploy_production
 
 # Job 1:
 Test:
   stage: test
   script:
+    - sudo apt-get update
+    - sudo apt-get upgrade
+    - sudo apt install nodejs
+    - sudo apt-get install docker-ce docker-ce-cli containerd.io
     - npm install
     - docker run -dti -p 27017:27017 --name mongodb mongo
-    - npm run test
+    - npm test
 
 
 #Job 2:
 #Deploy to staging
-Production:
-  image: mongo:latest
-  only:
-    - master
-  stage: deploy_production
-  script:
-    - gem install dpl
-    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+#Production:
+#  image: mongo:latest
+#  only:
+#    - master
+#  stage: deploy_production
+#  script:
+#    - gem install dpl
+#    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
