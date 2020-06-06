@@ -1,6 +1,6 @@
 {
   "db":{
-    "url":"mongodb://localhost:27017/ApiWev"
+    "url":"mongodb://localhost:27017/ApiWeb"
   },
   "env":"test",
   "secret":{
