@@ -13,7 +13,7 @@ Test:
     - apt-get update
     - apt-get install -y nodejs
     #- docker run -dti -p 27017:27017 --name mongodb mongo
-    - npm test
+    - npm start
 
 
 #Job 2:
