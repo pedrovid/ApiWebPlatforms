@@ -10,13 +10,18 @@ services:
 Test:
   stage: test
   script:
-    - apt-get update
+    - apt-get update -qy
     - apt-get install -y nodejs
-    #- docker run -dti -p 27017:27017 --name mongodb mongo
+    - apt-get install -y ruby-dev
+    - npm install
+    - gem install dpl
     - npm start
+    - dpl --provider=heroku --app=HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+    only:
+    - master
 
 
-#Job 2:
+    #Job 2:
 #Deploy to staging
 #Production:
 #  image: mongo:latest
