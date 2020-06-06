@@ -3,23 +3,14 @@ image: node:latest
 
 stages:
   - test
-#  - deploy
-
-services:
-  - mongo:latest
 # Job 1:
 Test:
   stage: test
+  services:
+    - mongo:latest
   script:
     - apt-get update -qy
     - apt-get install -y nodejs
     - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
-    #Job 2:
-#Deploy to staging
-#Production:
-#  only:
-#    - master
-#  stage: deploy
-#  script:
