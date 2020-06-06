@@ -10,7 +10,7 @@ services:
 Test:
   stage: test
   script:
-    - apt-get update -qy
+    - apt-get update
     - apt-get install -y nodejs
     - apt-get install -y ruby-dev
     - npm install
