@@ -4,9 +4,10 @@ image: node:8.10.0
 cache:
   paths:
     - node_modules/
-    - deploy_production
+
 stages:
   - test
+  - deploy_production
 
 # Job 1:
 Test:
@@ -20,12 +21,10 @@ Test:
 #Job 2:
 #Deploy to staging
 Production:
-  image: ruby:latest
+  image: mongo:latest
   only:
     - master
   stage: deploy_production
   script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
