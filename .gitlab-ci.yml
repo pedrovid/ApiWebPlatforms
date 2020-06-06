@@ -8,6 +8,7 @@ Test:
   stage: test
   services:
     - mongo:latest
+    alias: mongodb
   script:
     - apt-get update -qy
     - apt-get install -y nodejs
