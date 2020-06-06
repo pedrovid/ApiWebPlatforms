@@ -1,3 +1,8 @@
 {
-  "err.load.user" : "error al cargar el usuario del sistema con id {{id}}"
+  "err.load.one" : "error al cargar el {{item}} del sistema con id {{id}}",
+  "err.load.many" : "error al cargar los {{item}} del sistema",
+  "err.create.one" : "error al crear el {{item}}",
+  "err.update.one" : "error al actualizar el {{item}} del sistema con id {{id}}",
+  "err.delete.one" : "error al eliminar el {{item}} del sistema con id {{id}}",
+  "succeed":"El procedimiento se completo correctamente"
 }

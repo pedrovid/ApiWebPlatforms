@@ -15,8 +15,9 @@ const app = express();
 
 i18n.configure({
   locales: ['es', 'en'],
-  cookie: 'languaje',
-  directory: __dirname + '/locales'
+  cookie: 'language',
+  directory: __dirname + '/locales',
+  defaultLocale:'es'
 });
 
 // view engine setup

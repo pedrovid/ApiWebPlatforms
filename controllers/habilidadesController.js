@@ -16,10 +16,10 @@ function list(req, res, next) {
   Habilidad.find()
     .then(obj =>
       res.status(200).json({
-       message:'habilidad del sistema',
+       message:res.__('succeed'),
        objs:obj
     })).catch(err => res.status(500).json({
-      message: "error al cargar los habilidad del sistema",
+      message: res.__('err.load.one', {"item":"habilidades"}),
       objs: err
     }));
 }
@@ -29,11 +29,11 @@ function index(req, res, next) {
   const id = req.params.id;
   Habilidad.findOne({"_id":id})
     .then(obj => res.status(200).json({
-      message:`habilidad del sistema con id ${id}`,
+      message:res.__('succeed'),
       objs: obj
     })).catch(err => res.status(500).json({
       //message: `error al cargar el usuario del sistema con id = ${id}`,
-      message: res.__('err.load.user', {"id":id}),
+      message: res.__('err.load.one', {"id":id,"item":"habilidad"}),
       objs: err
     }));
 }
@@ -49,10 +49,10 @@ function create(req, res, next) {
   });
 
   habilidad.save().then(obj => res.status(200).json({
-          message : 'habilidad creado correctamente.',
+          message : res.__('succeed'),
           objs: obj
         })).catch(err => res.status(500).json({
-          message: 'no se pudo guardar el habilidad',
+          message: res.__('err.create.one', {"item":"habilidad"}),
           objs: err
       }));
 }
@@ -69,10 +69,10 @@ function update(req, res, next) {
 
     exp.save().then(obj => {
       res.status(200).json({
-          message : 'habilidad actualizado correctamente.',
+          message : res.__('succeed'),
           objs: obj
         }).catch(err => res.status(500).json({
-          message: 'no se pudo guardar el habilidad',
+          message: res.__('err.update.one', {"id":id,"item":"habilidad"}),
           objs: err
       }))
     })
@@ -84,10 +84,10 @@ function update(req, res, next) {
 function destroy(req, res, next) {
   const id = req.params.id;
   Habilidad.remove({"_id":id}).then(obj => res.status(200).json({
-    message:`habilidad del sistema con id ${id} ha sido elimiando`,
+    message:res.__('succeed'),
     objs: obj
   })).catch(err => res.status(500).json({
-    message: `error al eliminar el habilidad del sistema con id = ${id}`,
+    message: res.__('err.delete.one', {"id":id,"item":"habilidad"}),
     objs: err
   }));
 }

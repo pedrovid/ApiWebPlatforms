@@ -1,3 +1,8 @@
 {
-  "err.load.user" : "error to load an user with id {{id}} "
+  "err.load.one" : "error to load the {{item}} with id {{id}} ",
+  "err.load.many" : "error to load the {{item}}",
+  "err.create.one" : "error to create the {{item}}",
+  "err.update.one" : "error to update the {{item}} with id {{id}} ",
+  "err.delete.one" : "error to delete the {{item}} with id {{id}} ",
+  "succeed":"The procedure ended successfully"
 }

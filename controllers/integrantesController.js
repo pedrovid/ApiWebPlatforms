@@ -16,10 +16,10 @@ function list(req, res, next) {
   Integrante.find().populate({path:'_miembro'})
     .then(obj =>
       res.status(200).json({
-       message:'integrante del sistema',
+       message:res.__('succeed'),
        objs:obj
     })).catch(err => res.status(500).json({
-      message: "error al cargar los integrante del sistema",
+      message: res.__('err.load.many', {"item":"integrantes"}),
       objs: err
     }));
 }
@@ -29,11 +29,11 @@ function index(req, res, next) {
   const id = req.params.id;
   Integrante.findOne({"_id":id}).populate({path:'_miembro'})
     .then(obj => res.status(200).json({
-      message:`integrante del sistema con id ${id}`,
+      message:res.__('succeed'),
       objs: obj
     })).catch(err => res.status(500).json({
       //message: `error al cargar el usuario del sistema con id = ${id}`,
-      message: res.__('err.load.user', {"id":id}),
+      message: res.__('err.load.one', {"id":id,"item":"integrante"}),
       objs: err
     }));
 }
@@ -49,10 +49,10 @@ function create(req, res, next) {
   });
 
   integrante.save().then(obj => res.status(200).json({
-          message : 'integrante creado correctamente.',
+          message : res.__('succeed'),
           objs: obj
         })).catch(err => res.status(500).json({
-          message: 'no se pudo guardar el integrante',
+          message:res.__('err.create.one', {"item":"integrante"}),
           objs: err
       }));
 }
@@ -69,10 +69,10 @@ function update(req, res, next) {
 
     exp.save().then(obj => {
       res.status(200).json({
-          message : 'integrante actualizado correctamente.',
+          message : res.__('succeed'),
           objs: obj
         }).catch(err => res.status(500).json({
-          message: 'no se pudo guardar el integrante',
+          message: res.__('err.update.one', {"id":id,"item":"integrante"}),
           objs: err
       }))
     })
@@ -84,10 +84,10 @@ function update(req, res, next) {
 function destroy(req, res, next) {
   const id = req.params.id;
   Integrante.remove({"_id":id}).then(obj => res.status(200).json({
-    message:`integrante del sistema con id ${id} ha sido elimiando`,
+    message:res.__('succeed'),
     objs: obj
   })).catch(err => res.status(500).json({
-    message: `error al eliminar el integrante del sistema con id = ${id}`,
+    message: res.__('err.delete.one', {"id":id,"item":"integrante"}),
     objs: err
   }));
 }

@@ -16,10 +16,10 @@ function list(req, res, next) {
   Miembro.find().populate({path:'_habilidades'})
     .then(obj =>
       res.status(200).json({
-       message:'miembro del sistema',
+       message:res.__('succeed'),
        objs:obj
     })).catch(err => res.status(500).json({
-      message: "error al cargar los miembro del sistema",
+      message: res.__('err.load.many', {"item":"miembros"}),
       objs: err
     }));
 }
@@ -27,13 +27,14 @@ function list(req, res, next) {
 // regrese un elemento GET /:id => index
 function index(req, res, next) {
   const id = req.params.id;
+  console.log(req.cookie);
   Miembro.findOne({"_id":id}).populate({path:'_habilidades'})
     .then(obj => res.status(200).json({
-      message:`miembro del sistema con id ${id}`,
+      message:res.__('succeed'),
       objs: obj
     })).catch(err => res.status(500).json({
       //message: `error al cargar el usuario del sistema con id = ${id}`,
-      message: res.__('err.load.user', {"id":id}),
+      message: res.__('err.load.one', {"id":id, "item":"miembro"}),
       objs: err
     }));
 }
@@ -56,10 +57,10 @@ function create(req, res, next) {
   });
 
   miembro.save().then(obj => res.status(200).json({
-          message : 'miembro creado correctamente.',
+          message : res.__('succeed'),
           objs: obj
         })).catch(err => res.status(500).json({
-          message: 'no se pudo guardar el miembro',
+          message: res.__('err.create.one', {"item":"miembro"}),
           objs: err
       }));
 }
@@ -84,10 +85,10 @@ function update(req, res, next) {
 
     exp.save().then(miembro => {
       res.status(200).json({
-          message : 'miembro actualizado correctamente.',
+          message : res.__('succeed'),
           objs: miembro
         }).catch(err => res.status(500).json({
-          message: 'no se pudo guardar el miembro',
+          message: res.__('err.load.one', {"id":id, "item":"miembro"}),
           objs: err
       }));
     });
@@ -98,10 +99,10 @@ function update(req, res, next) {
 function destroy(req, res, next) {
   const id = req.params.id;
   Miembro.remove({"_id":id}).then(obj => res.status(200).json({
-    message:`miembro del sistema con id ${id} ha sido elimiando`,
+    message:res.__('succeed'),
     objs: obj
   })).catch(err => res.status(500).json({
-    message: `error al eliminar el miembro del sistema con id = ${id}`,
+    message: res.__('err.delete.one', {"id":id, "item":"miembro"}),
     objs: err
   }));
 }
