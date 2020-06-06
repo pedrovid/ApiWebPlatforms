@@ -10,6 +10,7 @@ const miembroRouter = require('./routes/miembros');
 const habilidadRouter = require('./routes/habilidades');
 const integranteRouter = require('./routes/integrantes');
 const usuarioRouter = require('./routes/usuarios');
+const loginRouter = require('./routes/login');
 const i18n = require("i18n");
 
 const app = express();
@@ -33,8 +34,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
 
 const jwtKey = config.get("secret.key");
-app.use(expressJwt({secret:jwtKey}).unless({path:["/login","/usuarios"]}));
+app.use(expressJwt({secret:jwtKey}).unless({path:["/login"/*,"/usuarios"*/]}));
 
+//Usuario prueba
+/*
+{
+  "email":"prueba@email.com",
+  "password":"1234"
+}
+*/
+
+app.use('/login', loginRouter);
 app.use('/expedientes', expedienteRouter);
 app.use('/miembros', miembroRouter);
 app.use('/habilidades', habilidadRouter);
