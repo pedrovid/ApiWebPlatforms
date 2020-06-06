@@ -7,7 +7,9 @@ stages:
 Test:
   stage: test
   services:
-    - mongo:latest
+    - name: mongo:latest
+      alias: mongoproject
+      command: mongod
   script:
     - apt-get update -qy
     - apt-get install -y nodejs
