@@ -1,5 +1,5 @@
 # Node docker image on which this would be run
-image: node:6.14.5
+image: node:latest
 
 cache:
   paths:
