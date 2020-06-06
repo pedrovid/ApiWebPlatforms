@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Miembro = require('../models/miembro');
 
 const schema = mongoose.Schema({
   _nombreProyecto:String,
@@ -9,7 +8,7 @@ const schema = mongoose.Schema({
   _productManager:String,
   _productOwner:String,
   _miembros:[
-    Miembro
+    Number
   ]
 });
 
@@ -81,5 +80,5 @@ class Expendiente {
   }
 }
 
-schema.loadClass(Expediente);
+schema.loadClass(Expendiente);
 module.exports = mongoose.model('Expediente', schema);

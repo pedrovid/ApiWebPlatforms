@@ -12,7 +12,9 @@ const jwtKey = config.get("secret.key");
 
 // todos los elementos GET / => list
 function list(req, res, next) {
-
+  res.status(200).json({
+   message:'Usuarios del sistema'
+  })
 }
 
 // regrese un elemento GET /:id => index
@@ -24,17 +26,23 @@ function index(req, res, next) {
 
 // crea un elemento POST /create => createError
 function create(req, res, next) {
-
+  res.status(200).json({
+   message:'Usuarios del sistema'
+ })
 }
 
 // modifica un elemento PUT /:id => update
 function update(req, res, next) {
-
+  res.status(200).json({
+   message:'Usuarios del sistema'
+  })
 }
 
 //elimina un elemento DELETE /:id => destroy
 function destroy(req, res, next) {
-
+  res.status(200).json({
+   message:'Usuarios del sistema'
+  })
 }
 
 module.exports = {
