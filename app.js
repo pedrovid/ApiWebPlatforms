@@ -9,6 +9,7 @@ const expedienteRouter = require('./routes/expedientes');
 const miembroRouter = require('./routes/miembros');
 const habilidadRouter = require('./routes/habilidades');
 const integranteRouter = require('./routes/integrantes');
+const usuarioRouter = require('./routes/usuarios');
 const i18n = require("i18n");
 
 const app = express();
@@ -32,12 +33,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
 
 const jwtKey = config.get("secret.key");
-app.use(expressJwt({secret:jwtKey}).unless({path:["/login"]}));
+app.use(expressJwt({secret:jwtKey}).unless({path:["/login","/usuarios"]}));
 
 app.use('/expedientes', expedienteRouter);
 app.use('/miembros', miembroRouter);
 app.use('/habilidades', habilidadRouter);
 app.use('/integrantes', integranteRouter);
+app.use('/usuarios', usuarioRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
