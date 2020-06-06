@@ -2,15 +2,16 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
   _nombreCompleto:String,
-  _fechaNacimiento:String,
+  _fechaNacimiento:Date,
   _curp:String,
   _rfc: String,
   _domicilio:String,
   _habilidades:[{
-    _lenguaje:String,
-    _rank:String
+    type:mongoose.Schema.ObjectId,
+    ref:'Habilidad'
   }]
 });
+
 
 class Miembro {
   constructor(nombreCompleto, fechaNacimiento, curp, rfc, domicilio, habilidades){

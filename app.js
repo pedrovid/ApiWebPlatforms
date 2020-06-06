@@ -6,6 +6,9 @@ const logger = require('morgan');
 const expressJwt = require('express-jwt');
 const config = require('config');
 const expedienteRouter = require('./routes/expedientes');
+const miembroRouter = require('./routes/miembros');
+const habilidadRouter = require('./routes/habilidades');
+const integranteRouter = require('./routes/integrantes');
 const i18n = require("i18n");
 
 const app = express();
@@ -30,8 +33,10 @@ app.use(i18n.init);
 const jwtKey = config.get("secret.key");
 //app.use(expressJwt({secret:jwtKey}).unless({path:["/login"]}));
 
-app.use('/', expedienteRouter);
-
+app.use('/expedientes', expedienteRouter);
+app.use('/miembros', miembroRouter);
+app.use('/habilidades', habilidadRouter);
+app.use('/integrantes', integranteRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -3,9 +3,9 @@ const expedienteController = require('../controllers/expedienteController')
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/index/:id', expedienteController.index);
+router.get('/:id', expedienteController.index);
 
-router.get('/:page?', expedienteController.list);
+router.get('/', expedienteController.list);
 
 router.post('/', expedienteController.create);
 

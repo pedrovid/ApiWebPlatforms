@@ -2,15 +2,18 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
   _nombreProyecto:String,
-  _fechaSolicitud:String,
-  _fechaArranque:String,
+  _fechaSolicitud:Date,
+  _fechaArranque:Date,
   _descripcion: String,
   _productManager:String,
   _productOwner:String,
-  _miembros:[
-    Number
-  ]
+  _miembros:[{
+    type:mongoose.Schema.ObjectId,
+    ref:'Integrante'
+  }]
 });
+
+
 
 class Expendiente {
   constructor(nombreProyecto, fechaSolicitud, fechaArranque, descripcion, productManager, productOwner, miembros){
