@@ -3,6 +3,7 @@ image: node:latest
 
 stages:
   - test
+  - deploy
 
 services:
   - mongo:latest
@@ -13,19 +14,15 @@ Test:
     - apt-get update -qy
     - apt-get install -y nodejs
     - apt-get install -y ruby-dev
-    - gem install dpl
     - npm start
-    - dpl --provider=heroku --app=HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
-    #- docker run -dti -p 27017:27017 --name mongodb mongo
 
 
     #Job 2:
 #Deploy to staging
-#Production:
-#  image: mongo:latest
-#  only:
-#    - master
-#  stage: deploy_production
-#  script:
-#    - gem install dpl
-#    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+Production:
+  only:
+    - master
+  stage: deploy_production
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
