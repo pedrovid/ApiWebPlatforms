@@ -7,10 +7,9 @@ stages:
 Test:
   stage: test
   services:
-    - name: mongo:latest
-      alias: mongoproject
-      command: mongod
+    - mongo:latest
   script:
+    - echo $MONGO_URI_TESTS
     - apt-get update -qy
     - apt-get install -y nodejs
     - apt-get install -y ruby-dev
