@@ -12,15 +12,20 @@ const config = require('config');
 
 // todos los elementos GET / => list
 function list(req, res, next) {
-  Expediente.find().populate("_miembros")
-    .then(obj =>
-      res.status(200).json({
-       message:res.__('succeed'),
-       objs:obj
-    })).catch(err => res.status(500).json({
-      message: res.__('err.load.many', {"item":"expedientes"}),
-      objs: err
-    }));
+  let name ="Expedientes";
+  res.render('expediente/list',{
+    title:"Expedientes",
+    cabecera:name});
+
+//  Expediente.find().populate("_miembros")
+//    .then(obj =>
+//      res.status(200).json({
+//       message:res.__('succeed'),
+//       objs:obj
+//    })).catch(err => res.status(500).json({
+//      message: res.__('err.load.many', {"item":"expedientes"}),
+//      objs: err
+//    }));
 }
 
 // regrese un elemento GET /:id => index
