@@ -11,8 +11,11 @@ const habilidadRouter = require('./routes/habilidades');
 const integranteRouter = require('./routes/integrantes');
 const usuarioRouter = require('./routes/usuarios');
 const loginRouter = require('./routes/login');
+var passport = require('passport');
 const i18n = require("i18n");
 const methodOverride = require('method-override')
+
+require("./passport")(passport);
 const app = express();
 
 i18n.configure({
@@ -21,6 +24,9 @@ i18n.configure({
   directory: __dirname + '/locales',
   defaultLocale:'es'
 });
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,6 +61,7 @@ app.use('/usuarios', usuarioRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {

@@ -5,5 +5,17 @@
   "env":"test",
   "secret":{
     "key":"4e0214edc70d400e41d26702d7a3ea02"
+  },
+  "Github":{
+    "key":"263520564970263",
+    "secret":"60ae958f320e6ca7a365cd265aff9d9c"
+  },
+  "Facebook":{
+    "key":"263520564970263",
+    "secret":"60ae958f320e6ca7a365cd265aff9d9c"
+  },
+  "Google":{
+    "key":"730297481540-f7icta8p5gq981korrr6e34vnb715crj",
+    "secret":"w7tX5C3Qar2rh_ITkpUDjU_n"
   }
 }
