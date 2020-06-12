@@ -23,13 +23,13 @@ function edit(req, res, next){
 }
 
 function form(req, res, next){
-  let name = "Agregar un nuevo actor";
+  let name = "Agregar un nuevo Integrante";
   res.render('members/form',{cabecera:name, title:name})
 }
 
 // todos los elementos GET / => list
 function list(req, res, next) {
-  let name = "listado de todos los actores";
+  let name = "listado de todos los Integrantes";
   let page = req.params.page ? req.params.page : 1;
   const options = {
     page: page,
@@ -37,7 +37,7 @@ function list(req, res, next) {
   };
   Integrante.find().populate({path:'_miembro'})
   .then((integrantes)=>{
-    res.render('members/list',{title:"Actores en mi Videoclub", cabecera:name,integrantes:integrantes});
+    res.render('members/list',{title:"Integrantes", cabecera:name,integrantes:integrantes});
   });
 }
 
@@ -65,10 +65,7 @@ function create(req, res, next) {
     _rol:rol,
   });
 
-  integrante.save().then(obj => res.status(200).json({
-          message : res.__('succeed'),
-          objs: obj
-        })).catch(err => res.status(500).json({
+  integrante.save().then(obj => res.redirect('/integrantes/')).catch(err => res.status(500).json({
           message:res.__('err.create.one', {"item":"integrante"}),
           objs: err
       }));
@@ -90,17 +87,27 @@ function update(req, res, next) {
 //elimina un elemento DELETE /:id => destroy
 function destroy(req, res, next) {
   const id = req.params.id;
-  Integrante.remove({"_id":id}).then(obj => res.status(200).json({
-    message:res.__('succeed'),
-    objs: obj
-  })).catch(err => res.status(500).json({
+  console.log(id);
+  Integrante.remove({"_id":id}).then(obj => res.redirect('/integrantes/'))
+  .catch(err => res.status(500).json({
+    message: res.__('err.delete.one', {"id":id,"item":"integrante"}),
+    objs: err
+  }));
+}
+
+//elimina un elemento DELETE /:id => destroy
+function remove(req, res, next) {
+  const id = req.params.id;
+  console.log(id);
+  Integrante.remove({"_id":id}).then(obj => res.redirect('/integrantes/'))
+  .catch(err => res.status(500).json({
     message: res.__('err.delete.one', {"id":id,"item":"integrante"}),
     objs: err
   }));
 }
 
 function listData(req, res, next) {
-  let name = "listado de todos los actores";
+  let name = "listado de todos los Integrantes";
   let page = req.params.page ? req.params.page : 1;
   const options = {
     page: page,
@@ -108,10 +115,10 @@ function listData(req, res, next) {
   };
   Integrante.find().populate({path:'_miembro'})
   .then((integrantes)=>{
-    res.render('members/list',{title:"Actores en mi Videoclub", cabecera:name,integrantes:integrantes});
+    res.render('members/list',{title:"Integrantes", cabecera:name,integrantes:integrantes});
   });
 }
 
 module.exports = {
-  list, index, create, update, destroy, listData, edit, form
+  list, index, create, update, destroy, listData, edit, form, remove
 }

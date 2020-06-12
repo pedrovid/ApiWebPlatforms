@@ -7,6 +7,8 @@ router.get('/edit/:id', integrantesController.edit);
 
 router.get('/create', integrantesController.form);
 
+router.get('/delete/:id', integrantesController.remove);
+
 router.get('/:id', integrantesController.index);
 
 router.get('/', integrantesController.list);
@@ -17,6 +19,10 @@ router.post('/', integrantesController.create);
 
 router.put('/:id', integrantesController.update);
 
+
+
 router.delete('/:id', integrantesController.destroy);
+
+
 
 module.exports = router;

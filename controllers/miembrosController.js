@@ -56,10 +56,10 @@ function create(req, res, next) {
     _habilidades:habilidades
   });
 
-  miembro.save().then(obj => res.status(200).json({
-          message : res.__('succeed'),
-          objs: obj
-        })).catch(err => res.status(500).json({
+  miembro.save().then(obj => {
+      let name = "Agregar un nuevo Integrante";
+      res.render('members/form',{cabecera:name, title:name, member:obj._id})
+  }).catch(err => res.status(500).json({
           message: res.__('err.create.one', {"item":"miembro"}),
           objs: err
       }));
@@ -84,13 +84,7 @@ function update(req, res, next) {
     exp._habilidades = (habilidades!=null) ? habilidades:exp._habilidades;
 
     exp.save().then(miembro => {
-      res.status(200).json({
-          message : res.__('succeed'),
-          objs: miembro
-        }).catch(err => res.status(500).json({
-          message: res.__('err.load.one', {"id":id, "item":"miembro"}),
-          objs: err
-      }));
+        res.redirect('../integrantes/')
     });
   });
 }

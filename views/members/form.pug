@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h3 cabecera
+  h3 #{cabecera}
   if integrante
     form(action=`/miembros/${integrante._miembro._id}?_method=PUT` method="POST" id="formMiembro")
       div(class="form-group")
@@ -58,5 +58,8 @@ block content
         input(id="rol" class="form-control" name="rol" form="formIntegrante")
       div(class="form-group")
         label(for="lastName") Id:
-        input(id="miembro" class="form-control" name="miembro" form="formIntegrante")
+        if member
+          input(id="miembro" class="form-control" name="miembro" value=member form="formIntegrante")
+        else
+          input(id="miembro" class="form-control" name="miembro" form="formIntegrante")
       button(class="btn btn-primary" type="submit" form="formIntegrante") Guardar Integrante
