@@ -12,7 +12,7 @@ const integranteRouter = require('./routes/integrantes');
 const usuarioRouter = require('./routes/usuarios');
 const loginRouter = require('./routes/login');
 const i18n = require("i18n");
-
+const methodOverride = require('method-override')
 const app = express();
 
 i18n.configure({
@@ -32,9 +32,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
+app.use(methodOverride('_method'))
 
 const jwtKey = config.get("secret.key");
-//app.use(expressJwt({secret:jwtKey}).unless({path:["/login"/*,"/usuarios"*/]}));
+//app.use(expressJwt({secret:jwtKey}).unless({path:["/login","/usuarios"]}));
 
 //Usuario prueba
 /*

@@ -1,0 +1,62 @@
+extends ../layout
+
+block content
+  h3 cabecera
+  if integrante
+    form(action=`/miembros/${integrante._miembro._id}?_method=PUT` method="POST" id="formMiembro")
+      div(class="form-group")
+        label(for="name") Nombre:
+        input(id="nombreCompleto" class="form-control" name="nombreCompleto" value=integrante._miembro._nombreCompleto form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Fecha de Nacimiento:
+        input(id="fechaNacimiento" class="form-control" name="fechaNacimiento" value=integrante.miembro._fechaNacimiento form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Curp:
+        input(id="curp" class="form-control" name="curp" value=integrante.miembro._curp form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Rfc:
+        input(id="rfc" class="form-control" name="rfc" value=integrante.miembro._rfc form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Domicilio:
+        input(id="domicilio" class="form-control" name="domicilio" value=integrante.miembro._domicilio form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Habilidades:
+        input(id="habilidades" class="form-control" name="habilidades" value=integrante.miembro._habilidades form="formMiembro")
+      button(class="btn btn-primary" type="submit" form="formMiembro") Guardar Miembro
+    form(action=`/integrantes/${integrante._id}?_method=PUT` method="POST" id="formIntegrante")
+      div(class="form-group")
+        label(for="lastName") Rol:
+        input(id="rol" class="form-control" name="rol" value=integrante._rol form="formIntegrante")
+      div(class="form-group")
+        label(for="lastName") id:
+        input(id="miembro" class="form-control" name="miembro" value=integrante._miembro._id form="formIntegrante")
+      button(class="btn btn-primary" type="submit" form="formIntegrante") Guardar Integrante
+  else
+    form(action=`/miembros/` method="POST" id="formMiembro")
+      div(class="form-group")
+        label(for="name") Nombre:
+        input(id="nombreCompleto" class="form-control" name="nombreCompleto" form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Fecha de Nacimiento:
+        input(id="fechaNacimiento" class="form-control" name="fechaNacimiento" form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Curp:
+        input(id="curp" class="form-control" name="curp" form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Rfc:
+        input(id="rfc" class="form-control" name="rfc" form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Domicilio:
+        input(id="domicilio" class="form-control" name="domicilio" form="formMiembro")
+      div(class="form-group")
+        label(for="lastName") Habilidades:
+        input(id="habilidades" class="form-control" name="habilidades" form="formMiembro")
+      button(class="btn btn-primary" type="submit" form="formMiembro") Guardar Miembro
+    form(action=`/integrantes/` method="POST" id="formIntegrante")
+      div(class="form-group")
+        label(for="lastName") Rol:
+        input(id="rol" class="form-control" name="rol" form="formIntegrante")
+      div(class="form-group")
+        label(for="lastName") Id:
+        input(id="miembro" class="form-control" name="miembro" form="formIntegrante")
+      button(class="btn btn-primary" type="submit" form="formIntegrante") Guardar Integrante

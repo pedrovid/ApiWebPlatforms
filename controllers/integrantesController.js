@@ -11,17 +11,34 @@ const config = require('config');
 //const jwtKey = config.get("secret.key");
 //user => email, name, last_name, password
 
+function edit(req, res, next){
+  const id = req.params.id;
+  let name = "Agregar un nuevo integrante";
+  Integrante.findOne({'_id': id}).populate({path:'_miembro'})
+    .then(obj => {
+      console.log(obj);
+      res.render('members/form',
+        {cabecera:name,
+          title:name, integrante: obj})})
+}
+
+function form(req, res, next){
+  let name = "Agregar un nuevo actor";
+  res.render('members/form',{cabecera:name, title:name})
+}
+
 // todos los elementos GET / => list
 function list(req, res, next) {
+  let name = "listado de todos los actores";
+  let page = req.params.page ? req.params.page : 1;
+  const options = {
+    page: page,
+    limit: 5
+  };
   Integrante.find().populate({path:'_miembro'})
-    .then(obj =>
-      res.status(200).json({
-       message:res.__('succeed'),
-       objs:obj
-    })).catch(err => res.status(500).json({
-      message: res.__('err.load.many', {"item":"integrantes"}),
-      objs: err
-    }));
+  .then((integrantes)=>{
+    res.render('members/list',{title:"Actores en mi Videoclub", cabecera:name,integrantes:integrantes});
+  });
 }
 
 // regrese un elemento GET /:id => index
@@ -65,19 +82,9 @@ function update(req, res, next) {
 
   Integrante.findOne({"_id":id}).then(exp => {
     exp._miembro = (miembro!=null) ? miembro:exp._miembro;
-    exp._rol = (rank!=null) ? rank:exp._rol;
-
-    exp.save().then(obj => {
-      res.status(200).json({
-          message : res.__('succeed'),
-          objs: obj
-        }).catch(err => res.status(500).json({
-          message: res.__('err.update.one', {"id":id,"item":"integrante"}),
-          objs: err
-      }))
-    })
-
-  });
+    exp._rol = (rol!=null) ? rol:exp._rol;
+    exp.save().then(integrante => res.redirect('/integrantes/'));
+    });
 }
 
 //elimina un elemento DELETE /:id => destroy
@@ -92,6 +99,19 @@ function destroy(req, res, next) {
   }));
 }
 
+function listData(req, res, next) {
+  let name = "listado de todos los actores";
+  let page = req.params.page ? req.params.page : 1;
+  const options = {
+    page: page,
+    limit: 5
+  };
+  Integrante.find().populate({path:'_miembro'})
+  .then((integrantes)=>{
+    res.render('members/list',{title:"Actores en mi Videoclub", cabecera:name,integrantes:integrantes});
+  });
+}
+
 module.exports = {
-  list, index, create, update, destroy
+  list, index, create, update, destroy, listData, edit, form
 }
