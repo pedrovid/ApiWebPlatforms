@@ -24,22 +24,21 @@ module.exports = function(passport){
 
       return done(null, profile);
     }));
-    /*
-    passport.use(new GithubStrategy({
+
+    passport.use(new GitHubStrategy({
       clientID:config.Github.key,
       clientSecret:config.Github.secret,
-      callbackURL:"/auth/github.callback",
-      profileFields:["id", "displayName"]
-    }),function(accessToken, refreshToken, profile, done) {
+      callbackURL:"/login/auth/github/callback"
+    },function(accessToken, refreshToken, profile, done) {
 
       return done(null, profile);
-    });
-    */
+    }));
+
 /*
     passport.use(new GoogleStrategy({
       clientID:config.Google.key,
       clientSecret:config.Google.secret,
-      callbackURL:"http://localhost:3000/login/auth/google/callback",
+      callbackURL:"/login/auth/google/callback",
       passReqToCallback   : true
     },function(accessToken, refreshToken, profile, done) {
 
