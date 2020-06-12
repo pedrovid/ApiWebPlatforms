@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  div(id="app")
+    h3 #{cabecera}
+    table(class="table")
+      thead
+        th Nombre
+        th Fecha de Nacimiento
+        th CURP
+        th RFC
+        th Domicilio
+        th Rol
+        th
+          a(class ="btn btn-primary" href="/integrantes/create") Nuevo
+      tbody
+        each integrante in integrantes
+          tr
+            td #{integrante._miembro._nombreCompleto}
+            td #{integrante._miembro._fechaNacimiento}
+            td #{integrante._miembro._curp}
+            td #{integrante._miembro._rfc}
+            td #{integrante._miembro._domicilio}
+            td #{integrante._rol}
+            td
+              a(class ="btn btn-outline-info" href=`/integrantes/edit/${integrante._id}`) Editar
+              a(class ="btn btn-outline-danger" href="#") Eliminar
+  
