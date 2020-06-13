@@ -39,9 +39,9 @@ function index(req, res, next) {
   let object = new Expediente({
     _nombreProyecto:"Tarra",
     _fechaSolicitud:27/05/20,
-    _fechaAranque:28/05/20,
+    _fechaArranque:28/05/20,
     _descripcion:"Jo",
-    _productoManager:"Juan",
+    _productManager:"Juan",
     _productOwner:"Saul",
     _miembros:""
   });
@@ -57,14 +57,17 @@ function create(req, res, next) {
   let object = new Expediente({
     _nombreProyecto:req.body.nombreProyecto,
     _fechaSolicitud:req.body.fechaSolicitud,
-    _fechaAranque:req.body.fechaArranque,
+    _fechaArranque:req.body.fechaArranque,
     _descripcion:req.body.descripcion,
-    _productoManager:req.body.productManager,
+    _productManager:req.body.productManager,
     _productOwner:req.body.productOwner,
     //_miembros:req.body.miembros
   });
+  console.log('Descripcion:');
+  console.log(req.body.descripcion);
+  console.log(object);
   Expediente.create(object).then(obj => {
-    //res.flash("info", "Expediente creado correctamente.");
+    console.log(obj);
     res.redirect('/expedientes/');
   });
 }
@@ -73,7 +76,9 @@ function edit(req, res, next){
   const id = req.params.id;
   let name = "Edita un expediente" ;
   Expediente.findOne({'_id':id})
-  .then(obj => {res.render('expedientes/form', {
+  .then(obj => {
+    console.log(obj);
+    res.render('expedientes/form', {
     title:name, cabecera: name, expediente:obj
   })})
 }
@@ -85,9 +90,9 @@ function update(req, res, next) {
   .then((obj) =>{
     obj._nombreProyecto=req.body.nombreProyecto;
     obj._fechaSolicitud=req.body.fechaSolicitud;
-    obj._fechaAranque=req.body.fechaArranque;
+    obj._fechaArranque=req.body.fechaArranque;
     obj._descripcion=req.body.descripcion;
-    obj._productoManager=req.body.productManager;
+    obj._productManager=req.body.productManager;
     obj._productOwner=req.body.productOwner;
     //obj._miembros=req.body.miembros;
     obj.save().then(expediente => res.redirect('/expedientes/'));
