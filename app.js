@@ -10,6 +10,7 @@ const miembroRouter = require('./routes/miembros');
 const habilidadRouter = require('./routes/habilidades');
 const integranteRouter = require('./routes/integrantes');
 const usuarioRouter = require('./routes/usuarios');
+const narrativaRouter = require('./routes/narrativas');
 const loginRouter = require('./routes/login');
 var passport = require('passport');
 const i18n = require("i18n");
@@ -58,6 +59,7 @@ app.use('/miembros', miembroRouter);
 app.use('/habilidades', habilidadRouter);
 app.use('/integrantes', integranteRouter);
 app.use('/usuarios', usuarioRouter);
+app.use('/narrativas', narrativaRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -1,0 +1,70 @@
+extends ../layout
+
+block content
+  h3 #{cabecera}
+  if narrativa
+    form(action=`/narrativas/${narrativa._id}?_method=PUT` method="POST")
+      div(class="form-group")
+        label(for="name") Nombre:
+        input(id="nombre" class="form-control" name="nombre" value=narrativa._nombre)
+      div(class="form-group")
+        label(for="lastName") Como:
+        input(id="como" class="form-control" name="como" value=narrativa._como)
+      div(class="form-group")
+        label(for="lastName") Quiero:
+        input(id="quiero" class="form-control" name="quiero" value=narrativa._quiero)
+      div(class="form-group")
+        label(for="lastName") De tal manera:
+        input(id="deTalManera" class="form-control" name="deTalManera" value=narrativa._deTalManera)
+      div(class="form-group")
+        label(for="lastName") Prioridad:
+        input(id="prioridad" type="number" class="form-control" name="prioridad" value=narrativa._prioridad)
+      div(class="form-group")
+        label(for="lastName") Tamaño:
+        input(id="tamaño" type="number" class="form-control" name="tamaño" value=narrativa._tamaño)
+      div(class="form-group")
+        label(for="lastName") Nombre Criterio:
+        input(id="nombreCriterio" class="form-control" name="nombreCriterio" value=narrativa._nombreCriterio)
+      div(class="form-group")
+        label(for="lastName") Dado:
+        input(id="dado" class="form-control" name="dado" value=narrativa._dado)
+      div(class="form-group")
+        label(for="lastName") Cuando:
+        input(id="cuando" class="form-control" name="cuando" value=narrativa._cuando)
+      div(class="form-group")
+        label(for="lastName") Entonces:
+        input(id="entonces" class="form-control" name="entonces" value=narrativa._entonces)       
+      button(class="btn btn-primary" type="submit") Guardar Narrativa  
+  else
+    form(action=`/narrativas/` method="POST")
+      div(class="form-group")
+        label(for="name") Nombre:
+        input(id="nombre" class="form-control" name="nombre")
+      div(class="form-group")
+        label(for="lastName") Como:
+        input(id="como" class="form-control" name="como")
+      div(class="form-group")
+        label(for="lastName") Quiero:
+        input(id="quiero" class="form-control" name="quiero")
+      div(class="form-group")
+        label(for="lastName") De tal manera:
+        input(id="deTalManera" class="form-control" name="deTalManera")
+      div(class="form-group")
+        label(for="lastName") Prioridad:
+        input(id="prioridad" type="number" class="form-control" name="prioridad")
+      div(class="form-group")
+        label(for="lastName") Tamaño:
+        input(id="tamaño" type="number" class="form-control" name="tamaño")
+      div(class="form-group")
+        label(for="lastName") Nombre Criterio:
+        input(id="nombreCriterio" class="form-control" name="nombreCriterio")
+      div(class="form-group")
+        label(for="lastName") Dado:
+        input(id="dado" class="form-control" name="dado")
+      div(class="form-group")
+        label(for="lastName") Cuando:
+        input(id="cuando" class="form-control" name="cuando")
+      div(class="form-group")
+        label(for="lastName") Entonces:
+        input(id="entonces" class="form-control" name="entonces")       
+      button(class="btn btn-primary" type="submit") Guardar Narrativa

@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  div(id="app")
+    h3 #{cabecera}
+    table(class="table")
+      thead     
+        th Nombre
+        th Como
+        th Quiero
+        th De Tal Manera
+        th Prioridad
+        th Tamaño
+        th Criterio
+        th Dado
+        th Cuando
+        th Entonces
+        th
+          a(class ="btn btn-primary" href="/narrativas/create") Nuevo
+      tbody
+        each narrativa in narrativas
+          tr
+            td #{narrativa._nombre}
+            td #{narrativa._como}
+            td #{narrativa._quiero}
+            td #{narrativa._deTalManera}
+            td #{narrativa._prioridad}
+            td #{narrativa._tamaño}
+            td #{narrativa._nombreCriterio}
+            td #{narrativa._dado}
+            td #{narrativa._cuando}
+            td #{narrativa._entonces}
+            td
+              a(class ="btn btn-outline-info" href=`/narrativas/edit/${narrativa._id}`) Editar
+              a(class ="btn btn-outline-danger" href=`/narrativas/delete/${narrativa._id}`) Eliminar
+  
