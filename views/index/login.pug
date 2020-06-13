@@ -1,6 +1,11 @@
 extends ../layout
 
 block content
-  div
-    a(href="/login/auth/facebook") Login FB
-    a(href="/login/auth/github") Login Github
+  div(id="app")
+    a(class="btn btn-block btn-social btn-facebook" href="/login/auth/facebook")
+      span(class="fa fa-facebook") 
+      p Sign in with Facebook
+    
+    a(class="btn btn-block btn-social btn-github" href="/login/auth/github")
+      span(class="fa fa-github") 
+      p Sign in with Github
