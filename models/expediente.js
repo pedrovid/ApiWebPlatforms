@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const schema = mongoose.Schema({
   _nombreProyecto:String,
@@ -84,4 +85,5 @@ class Expendiente {
 }
 
 schema.loadClass(Expendiente);
+schema.plugin(mongoosePaginate);
 module.exports = mongoose.model('Expediente', schema);

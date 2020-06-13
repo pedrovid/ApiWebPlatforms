@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  h3=cabecera
+  p Proyectos
+  table(class="table")
+    thead
+      tr
+        th Nombre
+        th Solicitud
+        th Arranque
+        th Descripcion
+        th Product Manager
+        th Product Owner
+        //th Miembros
+        th 
+          a(class ="btn btn-primary" href="/expedientes/create") Nuevo
+    tbody
+      each expediente in expedientes.docs
+        tr
+          td #{expediente.nombreProyecto}
+          td #{expediente.fechaSolicitud}
+          td #{expediente.fechaArranque}
+          td #{expediente.descripcion}
+          td #{expediente.productManager}
+          td #{expediente.productOwner}
+          //td #{expediente.miembros}
+          td  
+            a(class ="btn btn-outline-info" 
+            href=`/expedientes/edit/${expediente._id}`) Editar
+            a(class ="btn btn-outline-danger" 
+            href=`/expedientes/delete/${expediente._id}`) Eliminar
+  a(class="btn btn-secondary btn-sm" href='/expedientes/1') <<
+  if expedientes.hasPrevPage
+    a(class="btn btn-secondary btn-sm" href=`/expedientes/${expedientes.prevPage}`) <
+  if expedientes.hasNextPage
+    a(class="btn btn-secondary btn-sm" href=`/expedientes/${expedientes.nextPage}`) >
+  a(class="btn btn-secondary btn-sm" href=`/expedientes/${expedientes.totalPages}`) >>

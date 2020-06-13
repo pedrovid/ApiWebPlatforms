@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+  h2=cabecera
+  if expediente 
+    form(action=`/expedientes/${expediente._id}?_method=PUT` method='POST')
+      div(class="form-group")
+        label(for="nombreProyecto") Nombre:
+        input(id="nombreProyecto"  class="form-control"  name="nombreProyecto" value=expediente._nombreProyecto)
+      div(class="form-group")
+        label(for="fechaSolicitud") Fecha de solicitud:
+        input(id="fechaSolicitud" class="form-control" name="fechaSolicitud" value=expediente._fechaSolicitud)
+      div(class="form-group")
+        label(for="fechaArranque") Fecha de arranque:
+        input(id="fechaArranque" class="form-control" name="fechaArranque" value=expediente._fechaArranque)
+      div(class ="form-gruop")
+        laber(for="descripcion") Descripcion
+        textarea(id="descripcion" class="form-control" rows="3" value=expediente._descripcion)
+      div(class="form-group")
+        label(for="productManager") Product Manager:
+        input(id="productManager" class="form-control" name="productManager" value=expediente._productoManager)
+      div(class="form-group")
+        label(for="productOwner") Product Owner:
+        input(id="productOwner" class="form-control" name="productOwner" value=expediente._productOwner)
+      //div(class="form-group")
+        label(for="miembros") Miembros:
+        input(id="miembrosr" class="form-control" name="miembros" value=expediente._miembros)
+      button(class="btn btn-primary" type="submit") Guardar
+  else   
+    form(action='/expedientes/' method ='POST')
+      div(class="form-group")
+        label(for="nombreProyecto") Nombre:
+        input(id="nombreProyecto"  class="form-control"  name="nombreProyecto")
+      div(class="form-group")
+        label(for="fechaSolicitud") Fecha de solicitud:
+        input(id="fechaSolicitud" class="form-control" name="fechaSolicitud")
+      div(class="form-group")
+        label(for="fechaArranque") Fecha de arranque:
+        input(id="fechaArranque" class="form-control" name="fechaArranque")
+      div(class ="form-gruop")
+        laber(for="descripcion") Descripcion
+        textarea(id="descripcion" class="form-control" rows="3")
+      div(class="form-group")
+        label(for="productManager") Product Manager:
+        input(id="productManager" class="form-control" name="productManager")
+      div(class="form-group")
+        label(for="productOwner") Product Owner:
+        input(id="productOwner" class="form-control" name="productOwner")
+      //div(class="form-group")
+        label(for="miembros") Miembros:
+        input(id="miembrosr" class="form-control" name="miembros")
+      button(class="btn btn-primary" type="submit") Guardar
+      
