@@ -45,10 +45,7 @@ function index(req, res, next) {
     _productOwner:"Saul",
     _miembros:""
   });
-  Expediente.create(object).then(obj => res.render('expedientes/list', {
-  title:"Expedientes",
-  cabecera:"",
-  expedientes:[]}));
+
 }
 
 function form(req, res, next){
@@ -65,10 +62,10 @@ function create(req, res, next) {
     _descripcion:req.body.descripcion,
     _productoManager:req.body.productManager,
     _productOwner:req.body.productOwner,
-    _miembros:req.body.miembros
+    //_miembros:req.body.miembros
   });
   Expediente.create(object).then(obj => {
-  //  res.flash("info", "Expediente creado correctamente.");
+    //res.flash("info", "Expediente creado correctamente.");
     res.redirect('/expedientes/');
   });
 }
@@ -77,9 +74,9 @@ function edit(req, res, next){
   const id = req.params.id;
   let name = "Edita un expediente" ;
   Expediente.findOne({'_id':id})
-  .then(obj => res.render('expedientes/form', {
+  .then(obj => {res.render('expedientes/form', {
     title:name, cabecera: name, expediente:obj
-   }));
+  })})
 }
 
 // modifica un elemento PUT /:id => update
@@ -93,7 +90,7 @@ function update(req, res, next) {
     obj._descripcion=req.body.descripcion;
     obj._productoManager=req.body.productManager;
     obj._productOwner=req.body.productOwner;
-    obj._miembros=req.body.miembors;
+    //obj._miembros=req.body.miembros;
     obj.save().then(expediente => res.redirect('/expedientes/'));
   });
 }

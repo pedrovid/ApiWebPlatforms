@@ -12,7 +12,7 @@ block content
         th Descripcion
         th Product Manager
         th Product Owner
-        th Miembros
+        //th Miembros
         th 
           a(class ="btn btn-primary" href="/expedientes/create") Nuevo
     tbody
@@ -24,7 +24,7 @@ block content
           td #{expediente.descripcion}
           td #{expediente.productManager}
           td #{expediente.productOwner}
-          td #{expediente.miembros}
+          //td #{expediente.miembros}
           td  
             a(class ="btn btn-outline-info" 
             href=`/expedientes/edit/${expediente._id}`) Editar
@@ -35,4 +35,4 @@ block content
     a(class="btn btn-secondary btn-sm" href=`/expedientes/${expedientes.prevPage}`) <
   if expedientes.hasNextPage
     a(class="btn btn-secondary btn-sm" href=`/expedientes/${expedientes.nextPage}`) >
-  a(class="btn btn-secondary btn-sm" href=`/expedientes\/${expedientes.totalPages}`) >>
+  a(class="btn btn-secondary btn-sm" href=`/expedientes/${expedientes.totalPages}`) >>

@@ -3,7 +3,7 @@ extends ../layout
 block content
   h2=cabecera
   if expediente 
-    form(action=`/expedientes/${expedientes._id}?_method=PUT` method='POST')
+    form(action=`/expedientes/${expediente._id}?_method=PUT` method='POST')
       div(class="form-group")
         label(for="nombreProyecto") Nombre:
         input(id="nombreProyecto"  class="form-control"  name="nombreProyecto" value=expediente._nombreProyecto)
@@ -22,7 +22,7 @@ block content
       div(class="form-group")
         label(for="productOwner") Product Owner:
         input(id="productOwner" class="form-control" name="productOwner" value=expediente._productOwner)
-      div(class="form-group")
+      //div(class="form-group")
         label(for="miembros") Miembros:
         input(id="miembrosr" class="form-control" name="miembros" value=expediente._miembros)
       button(class="btn btn-primary" type="submit") Guardar
@@ -46,7 +46,7 @@ block content
       div(class="form-group")
         label(for="productOwner") Product Owner:
         input(id="productOwner" class="form-control" name="productOwner")
-      div(class="form-group")
+      //div(class="form-group")
         label(for="miembros") Miembros:
         input(id="miembrosr" class="form-control" name="miembros")
       button(class="btn btn-primary" type="submit") Guardar

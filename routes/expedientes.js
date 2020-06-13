@@ -19,6 +19,8 @@ router.post('/', expedienteController.create);
 
 router.put('/:id', expedienteController.update);
 
+
+
 router.delete('/:id', expedienteController.destroy);
 
 
