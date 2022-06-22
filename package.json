@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/pedrovid/ApiWebPlatforms#readme",
   "dependencies": {
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "bcrypt": "^4.0.1",
     "config": "^3.3.1",
     "cookie-parser": "^1.4.5",
